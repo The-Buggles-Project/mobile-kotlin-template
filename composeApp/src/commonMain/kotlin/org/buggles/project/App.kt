@@ -17,6 +17,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import companioncube.composeapp.generated.resources.Res
 import companioncube.composeapp.generated.resources.compose_multiplatform
+import navigation.AppNavigation
 
 @Composable
 @Preview

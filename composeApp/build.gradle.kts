@@ -36,7 +36,6 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
-            implementation(libs.androidx.material3)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
@@ -49,6 +48,7 @@ kotlin {
             implementation(libs.voyager.navigator) // Core de navegación
             implementation(libs.voyager.tab.navigator)
             implementation(libs.voyager.transitions)
+            implementation(libs.androidx.navigation.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -86,6 +86,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime.ktx)
     debugImplementation(compose.uiTooling)
 }
 

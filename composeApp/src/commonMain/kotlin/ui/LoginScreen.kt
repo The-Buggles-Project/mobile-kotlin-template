@@ -4,10 +4,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.screen.Screen
+import controller.AuthController
+import kotlinx.coroutines.launch
 
 @Composable
-fun LoginScreen(): Screen {
+fun LoginScreen() {
+    val authController = AuthController()
+    val scope = rememberCoroutineScope()
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
@@ -33,10 +36,12 @@ fun LoginScreen(): Screen {
         )
 
         Button(
-            onClick = {
+            onClick =  {
                 isLoading = true
-                errorMessage = null
-                onLogin(username, password)
+                scope.launch {
+                    errorMessage = authController.onLogin(username, password)
+                    isLoading = false
+                }
             },
             enabled = username.isNotEmpty() && password.isNotEmpty()
         ) {
